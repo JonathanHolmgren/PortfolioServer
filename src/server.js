@@ -1,7 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import { createServer } from 'http'; // Nytt: Skapa en HTTP-server
 import { Server } from 'socket.io';
+
+dotenv.config();
 
 const app = express();
 const httpServer = createServer(app); // Använd httpServer för att hantera både HTTP och Socket.IO
@@ -21,7 +24,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 
-const port = 3000;
+const port = process.env.PORT;
 
 const users = {};
 
